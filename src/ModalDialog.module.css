@@ -109,6 +109,7 @@
 
   .small{
     text-align: center;
+    margin-left: 15px;
   }
 
   .addComment>button{

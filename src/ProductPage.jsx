@@ -18,9 +18,7 @@ const ProductPage = observer (() => {
     history.goBack()
     }
 
-    const params = useParams();
-    let id = +params.id 
-    let commentId   
+    const params = useParams();       
 
     useEffect(() => {
         data.setCurrentProductId.call(data, +params.id)
@@ -104,10 +102,6 @@ const ProductPage = observer (() => {
                 </div>
             </div> 
     </div>
-    
-    
-
-
 
 
     let modal1 =         
@@ -124,19 +118,15 @@ const ProductPage = observer (() => {
     </div>
 
 
-
-
-
-
  return(
      <div> 
 
         <div className='home'>
-            <a href="/"> Home </a>
+            <a href="/"><button>Home</button></a>
             <button onClick={() => setShowModal(!showModal)}>Edit product</button>            
         </div>        
             <div>            
-                <img src={data.formNewProduct.imgUrl} alt="" width="400" height="400"/>                   
+                <img src={data.formNewProduct.imgUrl} alt="" width="auto" height="400"/>                   
                 <div className="card__productName">
                     <span>{data.formNewProduct.name}</span>
                 </div>                                         

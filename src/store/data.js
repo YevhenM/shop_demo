@@ -1,3 +1,4 @@
+import { findAllByDisplayValue } from "@testing-library/react"
 import {makeAutoObservable} from "mobx"
 
 const initProducts = [
@@ -53,6 +54,10 @@ class data {
         },
         weight: ""
     }
+    validation = {
+        name: true        
+    }
+
     sortByName = false
     sortByQuantity = false
     currentProductId = 1;
@@ -82,6 +87,10 @@ class data {
        return this.sortByQuantity ? "red" : ""       
     }
 
+    get nameValid(){
+        return this.validation.name ? "" : "red"
+    }
+
     setCurrentProductId(id) {
         this.currentProductId = id
         this.formNewProduct.name = this.productById.name
@@ -106,14 +115,12 @@ class data {
     }
 
     deleteProduct(id) {
-        let index = -1
-
-        console.log("id = ", id)
+        let index = -1        
 
         this.products.forEach((el, i) => {
             if(el.id === id){
                 index = i
-                console.log("delete!", i)
+                
             }
         } )           
         
@@ -137,8 +144,7 @@ class data {
         if (this.sortByName) {
             sortedProducts.sort((a,b) => a.name > b.name? 1: -1)
         }
-        if (this.sortByQuantity) {
-            console.log("sort")
+        if (this.sortByQuantity) {            
             sortedProducts.sort((a,b) => +a.count > +b.count? 1: -1)
         }
 
@@ -149,7 +155,10 @@ class data {
         return this.products.find(product => product.id === this.currentProductId)
     }
 
-    addProduct() {
+    addProduct() {        
+
+        if (this.checkProductName()) {           
+
         let newProduct = 
         {
             id: this.lastId+1,
@@ -171,6 +180,12 @@ class data {
 
         this.saveLocalStorage()
 
+        return true
+
+        } 
+
+        return false
+
     }
 
     updateProduct() {
@@ -189,10 +204,17 @@ class data {
 
     onFormChange(property, value){
         this.formNewProduct[property] = value
+        this.validation[property] = true
     }
 
-
-
+    checkProductName(){        
+        if (this.formNewProduct.name.length == 0){            
+            this.validation.name = false;
+            return false
+        } else {
+        this.validation.name = true
+        return true }
+    }       
 }
 
 export default new data

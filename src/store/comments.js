@@ -86,8 +86,7 @@ class comments {
     }
 
     onNewTextCommentEdit(value){
-        this.newCommentText = value
-        console.log(this.newCommentText)
+        this.newCommentText = value        
     }
 
     deleteComment(){

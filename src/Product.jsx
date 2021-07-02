@@ -30,7 +30,7 @@ const Product = observer ((props) => {
                 <div className="deleteIcon" onClick={() => setShowModal(!showModal)}>x</div>
                 <div>
                 <Link to={`${baseUrl}/id/${props.id}`}>
-                <img src={props.imageUrl} alt="" width="150" height="150"/>                    
+                <img src={props.imageUrl} alt="" width="auto" height="150"/>                    
                 </Link>
                 <div className="card__productName">
                 <span>{props.name}</span>
@@ -38,8 +38,7 @@ const Product = observer ((props) => {
                                     
                     
                     <span>{props.count} pcs</span>
-                </div>
-                {/* <button onClick={() => setShowModal(!showModal)}>Delete product</button> */}
+                </div>                
             </div>                    
             {showModal && modal}
      </div>

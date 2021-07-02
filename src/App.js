@@ -7,10 +7,7 @@ import ProductPage from './ProductPage';
 function App() {
   return (
     <div className="App">
-      {/* <div className='home'>
-        <a href="/">
-          Home</a>
-      </div> */}
+      
       <div className='content'>
       <Router>
           <Switch>                
