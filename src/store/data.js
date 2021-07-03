@@ -93,12 +93,19 @@ class data {
 
     setCurrentProductId(id) {
         this.currentProductId = id
+
+        console.log(id)
+
+        console.log(this.products)
+
+        if (this.productById) {
         this.formNewProduct.name = this.productById.name
         this.formNewProduct.imgUrl = this.productById.imageUrl
         this.formNewProduct.count = this.productById.count
         this.formNewProduct.width = this.productById.size.width
         this.formNewProduct.height = this.productById.size.height
         this.formNewProduct.weight = this.productById.weight
+        }
     }
 
     readLocalStorage() {        
@@ -152,17 +159,21 @@ class data {
     }
 
     get productById(){
+
+        if(!this.products) {this.readLocalStorage()}
         return this.products.find(product => product.id === this.currentProductId)
     }
 
     addProduct() {        
 
-        if (this.checkProductName()) {           
+        if (this.checkProductName()) {   
+            
+        let img = this.formNewProduct.imgUrl ? this.formNewProduct.imgUrl : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png"  
 
         let newProduct = 
         {
             id: this.lastId+1,
-            imageUrl: this.formNewProduct.imgUrl,
+            imageUrl: img,
             name: this.formNewProduct.name,
             count: this.formNewProduct.count,
             size: {

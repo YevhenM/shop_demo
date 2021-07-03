@@ -27,7 +27,7 @@ const Product = observer ((props) => {
  return(
      <div className="wrapper">   
             <div className="card">
-                <div className="deleteIcon" onClick={() => setShowModal(!showModal)}>x</div>
+                <div className="deleteIcon" onClick={() => setShowModal(!showModal)}>✕</div>
                 <div>
                 <Link to={`${baseUrl}/id/${props.id}`}>
                 <img src={props.imageUrl} alt="" width="auto" height="150"/>                    

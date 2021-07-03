@@ -57,13 +57,21 @@
 .card{
   position: relative;
   width: 220px;
-  height: 220px;
+  min-height: 220px;
   margin: 10px;
   padding: 10px;
   /* border: solid 2px rgb(138, 138, 138); */
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card:hover .deleteIcon{  
+  opacity: 1;
+}
+
+.comment:hover .deleteIcon{  
+  opacity: 1;
 }
 
 .wrapper{
@@ -81,11 +89,14 @@
   height: 20px;
   cursor: pointer;
   color: rgb(155, 155, 155);
+  opacity: 0;   
 }
 
 .card__productName{
   font-size: x-large;
 }
+
+
 
 button{
   margin: 4px;
@@ -132,4 +143,11 @@ textarea {
    text-align: left;
    margin-bottom: 5px;
    color: gray;
+ }
+
+ .warning{
+   color:red;
+   border: 1px solid red;
+   font-size:small;
+   padding: 4px;   
  }

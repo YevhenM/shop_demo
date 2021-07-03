@@ -21,8 +21,9 @@ const ProductPage = observer (() => {
     const params = useParams();       
 
     useEffect(() => {
-        data.setCurrentProductId.call(data, +params.id)
         comments.readLocalStorage()
+        data.readLocalStorage()
+        data.setCurrentProductId.call(data, +params.id)        
     },[])   
 
     const onEdit = (event)=>{        
@@ -46,7 +47,7 @@ const ProductPage = observer (() => {
     const Comment = (props) => {
         return (
             <div className="comment" id={props.id}>
-                <div className="deleteIcon" onClick={() => onDeleteComment(props.id)} id={props.id}> X </div>
+                <div className="deleteIcon" onClick={() => onDeleteComment(props.id)} id={props.id}> ✕ </div>
                 <div className="dateTime"> {props.date} </div>
                 <div className="textComment">
                     {props.description}
@@ -141,7 +142,7 @@ const ProductPage = observer (() => {
              </div>
 
              <div className="addComment">
-                 <textarea type="text" placeholder="Write your comment here... " onChange={onEditComment} value={comments.newCommentText} />
+                 <textarea type="text" placeholder="Please leave your comment ... " onChange={onEditComment} value={comments.newCommentText} />
                  <div><button onClick={()=>comments.addNewComment()}>Send comment</button></div>
                  
              </div>

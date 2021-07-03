@@ -32,6 +32,7 @@ const ProductList = observer (() => {
                     <div className={s.modal_header}>New product</div>
                     <div className={s.modal_body}>
                             <div className={s.modal_content}>
+                                {!data.validation.name && <span className="warning">Please type product name!</span>}
                                 <label htmlFor="">Product name:
                                     <input type="text" placeholder="Product Name" name="name" value={data.formNewProduct.name} 
                                     onChange={onEdit} className={s.one}/>
